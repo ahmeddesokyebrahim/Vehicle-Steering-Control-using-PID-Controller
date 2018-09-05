@@ -25,7 +25,9 @@ The following equation summerizes the proportional term:
 ` steering_angle = - Kp * CTE`
 
 Applying the proportional term (P-Controller) to the vehicle, it will act like this:
+
 ![p-controller](https://i.imgur.com/UcCq2Dm.png)
+
 It will be overshooting overtime .. sometimes this overshooting will be slightly small and it may be OK, but even if it is small, it will never really converge, It will be what is called "marginally stable" or "stable"
 
 We can consider this overshooting as oscillation for our control process. When Kp is large, the oscillation is faster, and vise versa.
@@ -45,13 +47,17 @@ The following equation summerizes the PD-Controller:
 `steering_agnle = - Kp * CTE - Kd * (CTE - previous_CTE)`
 
 The following figure from my Udacilty lesson illustrates the impact of the D-term for having more smooth controller rather than P-controller only.
+
 ![PD-controller](https://i.imgur.com/LxTHRHm.png)
+
 
 ### Integral Term (Ki)
 The integral term tackles problems what is called in robotics **Systematic Bias**. To explain this problem with an example related to our case, assume that you receive your car with wheels 100% aligned straight. But in reality due to some mechanical offsets and errors, they are not alighned. When running our controller, this error will accumulate over time turning to a big error in CTE
 
 The following image illustraces the systematic bias:
+
 ![sys-bias](https://i.imgur.com/ycL1Sb2.png)
+
 Even the controller is stable at the end (in blue), it far away from the set point we need to achieve (yellow)
 
 The I-term solves for this problem by having the sum of all cross track errors you have ever observed. It will evetually correct the vehicle's motion
